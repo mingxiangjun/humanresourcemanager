@@ -1,6 +1,7 @@
-package org.ming.humanresource.dao;
+package org.ming.humanresource.dao.impl;
 
 import org.ming.humanresource.base.BaseDaoImpl;
+import org.ming.humanresource.dao.AccountInfoDao;
 import org.ming.humanresource.model.AccountInfo;
 import java.util.List;
 import org.slf4j.Logger;
@@ -13,7 +14,7 @@ import org.springframework.stereotype.Repository;
  * @create 2017-12-10 13:58
  */
 @Repository(value = "accountInfoDao")
-public class AccountInfoImpl extends BaseDaoImpl<AccountInfo> implements AccountInfoDao{
+public class AccountInfoImpl extends BaseDaoImpl<AccountInfo> implements AccountInfoDao {
     private final static Logger logger= LoggerFactory.getLogger(AccountInfoImpl.class);
     @Override
     public AccountInfo findByAccount(String account) {

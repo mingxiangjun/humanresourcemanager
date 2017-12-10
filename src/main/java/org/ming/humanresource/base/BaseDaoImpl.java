@@ -8,6 +8,7 @@ import org.hibernate.SessionFactory;
 import org.ming.humanresource.model.Page;
 import org.springframework.orm.hibernate4.HibernateCallback;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.lang.reflect.ParameterizedType;
@@ -35,17 +36,21 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao{
     public void setSuperSessionFactory(SessionFactory sessionFactory){
         setSessionFactory(sessionFactory);
     }
+
     @Override
+    @Transactional(readOnly = false)
     public void save(Object entity) {
         getHibernateTemplate().save(entity);
     }
 
     @Override
+    @Transactional(readOnly = false)
     public void delete(Object entity) {
         getHibernateTemplate().delete(entity);
     }
 
     @Override
+    @Transactional(readOnly = false)
     public void update(Object entity) {
         getHibernateTemplate().update(entity);
     }
@@ -56,6 +61,7 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao{
     }
 
     @Override
+    @Transactional(readOnly = false)
     public void deleteById(String id) {
         Object entity = findById(id);
         if (entity!=null){
