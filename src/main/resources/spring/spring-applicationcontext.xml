@@ -72,6 +72,4 @@
         <!-- 是否是广播 Topic类型消息 -->
         <property name="pubSubDomain" value="false"/>
     </bean>
-    <!-- Redis -->
-
 </beans>

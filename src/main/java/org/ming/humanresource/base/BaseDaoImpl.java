@@ -19,7 +19,7 @@ import java.util.List;
  * @author acer
  * @create 2017-12-10 12:06
  */
-public class BaseDaoImpl extends HibernateDaoSupport implements BaseDao{
+public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao{
     private Class<T> classEntity;
     public BaseDaoImpl() {
         //获取泛型实际类型
@@ -51,7 +51,7 @@ public class BaseDaoImpl extends HibernateDaoSupport implements BaseDao{
     }
 
     @Override
-    public Object findById(String id) {
+    public T findById(String id) {
         return getHibernateTemplate().get(classEntity,id);
     }
 
