@@ -1,18 +1,16 @@
-package org.ming.humanresource.dao.impl;
+package org.ming.humanresource.hrmanager.dao.impl;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.ming.humanresource.dao.AccountInfoDao;
-import org.ming.humanresource.model.AccountInfo;
+import org.ming.humanresource.hrmanager.dao.AccountInfoDao;
+import org.ming.humanresource.hrmanager.model.AccountInfo;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 
 import java.util.concurrent.CountDownLatch;
 
-import static org.junit.Assert.*;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:spring/spring-*.xml")
 public class AccountInfoImplTest {
@@ -23,11 +21,11 @@ public class AccountInfoImplTest {
 
     @Test
     public void saveAccount(){
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 800000; i++) {
             AccountInfo currentAccount = new AccountInfo();
             currentAccount.setAccount("userName"+i);
             currentAccount.setPassword("password");
-            currentAccount.setEmail("921962"+i+"@qq.com");
+            currentAccount.setEmail("921962"+(i%100)+"@qq.com");
             accountInfoDao.save(currentAccount);
         }
     }

@@ -1,8 +1,8 @@
-package org.ming.humanresource.dao.impl;
+package org.ming.humanresource.hrmanager.dao.impl;
 
 import org.ming.humanresource.base.BaseDaoImpl;
-import org.ming.humanresource.dao.AccountInfoDao;
-import org.ming.humanresource.model.AccountInfo;
+import org.ming.humanresource.hrmanager.dao.AccountInfoDao;
+import org.ming.humanresource.hrmanager.model.AccountInfo;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

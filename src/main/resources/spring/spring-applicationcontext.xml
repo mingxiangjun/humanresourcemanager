@@ -37,7 +37,7 @@
         <!-- 关联实体 -->
         <property name="annotatedClasses">
             <list>
-                <value>org.ming.humanresource.model.AccountInfo</value>
+                <value>org.ming.humanresource.hrmanager.model.AccountInfo</value>
             </list>
         </property>
     </bean>

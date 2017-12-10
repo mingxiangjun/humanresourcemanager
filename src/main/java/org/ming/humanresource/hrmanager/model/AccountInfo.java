@@ -1,4 +1,4 @@
-package org.ming.humanresource.model;
+package org.ming.humanresource.hrmanager.model;
 
 import org.hibernate.annotations.GenericGenerator;
 

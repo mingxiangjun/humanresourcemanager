@@ -1,11 +1,11 @@
-package org.ming.humanresource.base;
+package org.ming.humanresource.base.impl;
 
-import org.apache.poi.ss.formula.functions.T;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.ming.humanresource.model.Page;
+import org.ming.humanresource.base.BaseDao;
+import org.ming.humanresource.base.Page;
 import org.springframework.orm.hibernate4.HibernateCallback;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,7 +20,7 @@ import java.util.List;
  * @author acer
  * @create 2017-12-10 12:06
  */
-public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao{
+public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao {
     private Class<T> classEntity;
     public BaseDaoImpl() {
         //获取泛型实际类型

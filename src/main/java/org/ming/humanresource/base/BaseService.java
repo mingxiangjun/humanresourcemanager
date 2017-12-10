@@ -3,11 +3,12 @@ package org.ming.humanresource.base;
 import java.util.List;
 
 /**
- * Dao基类
- * @author MingXiangjun
- * @create 2017/12/10-11:55
+ * Service基类
+ *
+ * @author acer
+ * @create 2017-12-10 20:15
  */
-public interface BaseDao<T> {
+public interface BaseService<T> {
     /**
      * 保存
      * @param entity
@@ -45,7 +46,7 @@ public interface BaseDao<T> {
      * @param values
      * @return
      */
-    public List<T> findListByQuery(String hql,Object... values);
+    public List<T> findListByQuery(String hql, Object... values);
 
     /**
      * 根据HQL分页器查询

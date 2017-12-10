@@ -1,7 +1,7 @@
-package org.ming.humanresource.dao;
+package org.ming.humanresource.hrmanager.dao;
 
 import org.ming.humanresource.base.BaseDao;
-import org.ming.humanresource.model.AccountInfo;
+import org.ming.humanresource.hrmanager.model.AccountInfo;
 /**
  * 系统账号信息Dao：AccountInfoDao.java
  * @author MingXiangjun
