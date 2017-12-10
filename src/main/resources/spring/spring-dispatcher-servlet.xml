@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:cache="http://www.springframework.org/schema/cache"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/cache
+       http://www.springframework.org/schema/cache/spring-cache-4.2.xs
+">
+    <!-- 启用缓存注解功能，这个是必须的，否则注解不会生效，另外，该注解一定要声明在spring主配置文件中才会生效 -->
+    <cache:annotation-driven cache-manager="cacheManager" />
     <!-- 定义视图解析器 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix">
