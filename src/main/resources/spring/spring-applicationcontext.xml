@@ -64,7 +64,7 @@
             <value>humanresource</value>
         </constructor-arg>
     </bean>
-    <!-- Service Name -->
+    <!-- MQ Service Name -->
     <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
         <property name="connectionFactory" ref="jmsConnectionFactory"/>
         <property name="defaultDestination" ref="targetQueue"/>
@@ -72,4 +72,5 @@
         <!-- 是否是广播 Topic类型消息 -->
         <property name="pubSubDomain" value="false"/>
     </bean>
+    <!-- Redis -->
 </beans>
