@@ -11,37 +11,25 @@ import javax.persistence.*;
 @Entity
 @Table(name = "account_")
 public class AccountInfo {
-    /**
-     * 主键id
-     */
+    //主键id
     @Id
     @Column(name = "uuid")
     @GeneratedValue(generator = "paymentableGenerator")
     @GenericGenerator(name = "paymentableGenerator",strategy = "uuid")
     private String uuid;
-    /**
-     * 人员账号
-     */
+    //人员账号
     @Column(name = "account")
     private String account;
-    /**
-     * 账号密码
-     */
+    //账号密码
     @Column(name = "password")
     private String password;
-    /**
-     * 安全邮箱
-     */
+    //安全邮箱
     @Column(name = "email")
     private String email;
-    /**
-     * 安全问题
-     */
+    //安全问题
     @Column(name = "securityQues")
     private String securityQues;
-    /**
-     * 安全问题答案
-     */
+    //安全问题答案
     @Column(name = "securityAns")
     private String securityAns;
 

@@ -21,6 +21,7 @@ import java.util.List;
  * @create 2017-12-10 12:06
  */
 public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao {
+
     private Class<T> classEntity;
     public BaseDaoImpl() {
         //获取泛型实际类型
@@ -74,6 +75,24 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao {
         return getHibernateTemplate().find(hql,values);
     }
 
+    /**
+     * 根据HQL查询单条记录
+     *
+     * @param hql
+     * @param values
+     * @return
+     */
+    @Override
+    public Object findSingleByQuery(String hql, Object... values) {
+        List list = getHibernateTemplate().find(hql,values);
+        if (list!=null && list.size() == 1) {
+            return list.get(0);
+        }else{
+            logger.error("查询出错，查询出多条记录，HQL=["+hql+"],parameters=["+values+"]");
+            return new Object();
+        }
+    }
+
     @Override
     public Page findByPage(final String hql, final Page page, final Object... values) {
         getHibernateTemplate().execute(new HibernateCallback<Object>() {
@@ -86,16 +105,12 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao {
                     }
                     List countList = query.list();
                     int totalRows = countList!=null?countList.size():0;
-                    page.setTotalRows(totalRows);
+                    //初始化分页器，生成startIndex、totalPage等信息
+                    page.init(totalRows);
                     //分页
-                    int pageNo = page.getCurrentPageNo();
-                    int pageSize = page.getPageSize();
-                    int startIndex = 0;
-                    if (pageNo > 1) {
-                        startIndex = (pageNo-1)*pageSize;
-                    }
+                    int startIndex = page.getStartIndex();
                     query.setFirstResult(startIndex);
-                    query.setMaxResults(pageSize);
+                    query.setMaxResults(page.getPageSize());
                     List resultList = query.list();
                     page.setInfoList(resultList);
                 }

@@ -34,18 +34,26 @@ public interface BaseDao<T> {
     public T findById(String id);
 
     /**
-     * 更加id删除
+     * 根据id删除
      * @param id
      */
     public void deleteById(String id);
 
     /**
-     * 根据HQL删除
+     * 根据HQL查询
      * @param hql
      * @param values
      * @return
      */
     public List<T> findListByQuery(String hql,Object... values);
+
+    /**
+     * 根据HQL查询单条记录
+     * @param hql
+     * @param values
+     * @return
+     */
+    public T findSingleByQuery(String hql,Object... values);
 
     /**
      * 根据HQL分页器查询

@@ -1,6 +1,6 @@
 package org.ming.humanresource.hrmanager.dao.impl;
 
-import org.ming.humanresource.base.BaseDaoImpl;
+import org.ming.humanresource.base.impl.BaseDaoImpl;
 import org.ming.humanresource.hrmanager.dao.AccountInfoDao;
 import org.ming.humanresource.hrmanager.model.AccountInfo;
 import java.util.List;
@@ -14,8 +14,8 @@ import org.springframework.stereotype.Repository;
  * @create 2017-12-10 13:58
  */
 @Repository(value = "accountInfoDao")
-public class AccountInfoImpl extends BaseDaoImpl<AccountInfo> implements AccountInfoDao {
-    private final static Logger logger= LoggerFactory.getLogger(AccountInfoImpl.class);
+public class AccountInfoDaoImpl extends BaseDaoImpl<AccountInfo> implements AccountInfoDao {
+    private final static Logger logger= LoggerFactory.getLogger(AccountInfoDaoImpl.class);
     @Override
     public AccountInfo findByAccount(String account) {
         List<AccountInfo> list = findListByQuery("from AccountInfo where account=?",account);

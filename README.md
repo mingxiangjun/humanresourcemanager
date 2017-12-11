@@ -18,5 +18,6 @@ springmvc+hibernate+mysql+activemq+redis项目集成例子
   3、类命名统一为：<br/>
       接口类：XXX+"Service" or XXX+"Dao"<br/>
       实现：XXX+"ServiceImpl" or XXX+"DaoImol"<br/>
-      
       工具类：XXX+"Util"
+      
+      
