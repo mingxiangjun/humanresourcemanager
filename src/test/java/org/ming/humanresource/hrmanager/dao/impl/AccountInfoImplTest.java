@@ -19,7 +19,12 @@ public class AccountInfoImplTest {
     private int ThreadNum = 200;
     private CountDownLatch cdl = new CountDownLatch(ThreadNum);
 
-    @Test
+    /**
+     * 遇到问题，Hibernate批处理能力堪称捉急
+     * 网上查找解决方案：
+     *  1、绕过Hibernate直接使用jdbc API
+     */
+//    @Test
     public void saveAccount(){
         for (int i = 0; i < 800000; i++) {
             AccountInfo currentAccount = new AccountInfo();

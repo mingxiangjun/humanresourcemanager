@@ -3,7 +3,11 @@ package org.ming.humanresource.hrmanager.model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-
+/**
+ * AccountInfo.java
+ * @author MingXiangjun
+ * @create 2017/12/11-11:29
+ */
 @Entity
 @Table(name = "account_")
 public class AccountInfo {
