@@ -5,7 +5,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.ming.humanresource.base.BaseDao;
-import org.ming.humanresource.base.Page;
+import org.ming.humanresource.common.model.Page;
 import org.springframework.orm.hibernate4.HibernateCallback;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 import org.springframework.transaction.annotation.Transactional;

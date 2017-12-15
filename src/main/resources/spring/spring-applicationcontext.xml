@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns:amq="http://activemq.apache.org/schema/core"
@@ -8,16 +9,17 @@
        http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
         http://www.springframework.org/schema/tx
 	  http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
 	  http://activemq.apache.org/schema/core
-   	http://activemq.apache.org/schema/core/activemq-core-5.15.0.xsd
+   	http://activemq.apache.org/schema/core/activemq-core-5.9.0.xsd
 ">
-    <!-- 启动自动扫描该包下所有的Bean(例如@Controller) -->
-    <context:component-scan base-package="org.ming.humanresource" />
+
+    <context:component-scan base-package="org.ming.humanresource"/>
     <!-- 加载配置文件-->
     <context:property-placeholder location="classpath:commonconfig.properties"/>
-
     <!-- MySQL Config -->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="${jdbc.driverClassName}"/>
@@ -72,4 +74,6 @@
         <!-- 是否是广播 Topic类型消息 -->
         <property name="pubSubDomain" value="false"/>
     </bean>
+
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
 </beans>

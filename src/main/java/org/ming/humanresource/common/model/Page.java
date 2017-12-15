@@ -1,4 +1,4 @@
-package org.ming.humanresource.base;
+package org.ming.humanresource.common.model;
 
 import org.apache.log4j.Logger;
 

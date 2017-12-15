@@ -1,6 +1,7 @@
 package org.ming.humanresource.hrmanager.service.impl;
 
 import org.ming.humanresource.base.impl.BaseServiceImpl;
+import org.ming.humanresource.common.annotation.OperationLogAnnotation;
 import org.ming.humanresource.hrmanager.dao.AccountInfoDao;
 import org.ming.humanresource.hrmanager.model.AccountInfo;
 import org.ming.humanresource.hrmanager.service.AccountInfoService;
@@ -40,6 +41,7 @@ public class AccountInfoServiceImpl extends BaseServiceImpl<AccountInfo> impleme
      * @return
      */
     @Override
+    @OperationLogAnnotation(operatorType=1,resultType = 10086)
     public AccountInfo findByAccount(String account) {
         return accountInfoDao.findByAccount(account);
     }

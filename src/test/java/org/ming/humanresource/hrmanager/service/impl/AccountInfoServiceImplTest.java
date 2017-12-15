@@ -2,13 +2,13 @@ package org.ming.humanresource.hrmanager.service.impl;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.ming.humanresource.common.annotation.OperationLogAnnotation;
 import org.ming.humanresource.hrmanager.model.AccountInfo;
 import org.ming.humanresource.hrmanager.service.AccountInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import static org.junit.Assert.*;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:spring/spring-*.xml")
 public class AccountInfoServiceImplTest {
@@ -27,4 +27,11 @@ public class AccountInfoServiceImplTest {
             System.out.println("未查找到用户名为:【"+account+"】的用户信息");
         }
     }
+/*    @Autowired
+    private UserController userController;
+
+    @Test
+    public void findByAccount() throws Exception {
+        userController.testAOP("zhangsan", "123456");
+    }*/
 }

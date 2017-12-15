@@ -13,7 +13,7 @@ import java.util.concurrent.CountDownLatch;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:spring/spring-*.xml")
-public class AccountInfoImplTest {
+public class AccountInfoDaoImplTest {
     @Resource
     private AccountInfoDao accountInfoDao;
     private int ThreadNum = 200;

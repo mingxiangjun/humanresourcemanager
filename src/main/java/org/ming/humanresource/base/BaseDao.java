@@ -1,5 +1,7 @@
 package org.ming.humanresource.base;
 
+import org.ming.humanresource.common.model.Page;
+
 import java.util.List;
 
 /**
@@ -62,5 +64,5 @@ public interface BaseDao<T> {
      * @param values
      * @return
      */
-    public Page findByPage(String hql,Page page,Object... values);
+    public Page findByPage(String hql, Page page, Object... values);
 }
