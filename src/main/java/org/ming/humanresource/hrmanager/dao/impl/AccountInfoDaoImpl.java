@@ -19,7 +19,7 @@ public class AccountInfoDaoImpl extends BaseDaoImpl<AccountInfo> implements Acco
     @Override
     public AccountInfo findByAccount(String account) {
         List<AccountInfo> list = findListByQuery("from AccountInfo where account=?",account);
-        if (list==null){
+        if (list==null || list.size()==0){
             logger.info("未查找到账号为：【"+account+"】的账号信息");
             return new AccountInfo();
         }

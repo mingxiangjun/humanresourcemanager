@@ -1,4 +1,7 @@
 package org.ming.humanresource.cache.service;
+
+import org.springframework.data.redis.cache.RedisCacheElement;
+
 /**
  * CacheService.java
  * @author MingXiangjun
@@ -29,4 +32,14 @@ public interface CacheService {
      * @param <V>
      */
     public <V> void cachePut(String key, V value, String cacheName);
+
+    /**
+     * 存入数据至缓存，且设置过期时间
+     * @param key
+     * @param value
+     * @param cacheName
+     * @param timeToLive
+     * @param <V>
+     */
+    public <V> void cachePut(String key, V value, String cacheName,long timeToLive);
 }

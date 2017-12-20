@@ -76,4 +76,15 @@
     </bean>
 
     <aop:aspectj-autoproxy proxy-target-class="true"/>
+
+    <!-- Spring 线程池配置 -->
+    <bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+        <property name="maxPoolSize" value="${threadPool.maxPoolSize}"/>
+        <property name="corePoolSize" value="${threadPool.corePoolSize}"/>
+        <property name="keepAliveSeconds" value="${threadPool.keepAliveSeconds}"/>
+        <property name="queueCapacity" value="${threadPool.queueCapacity}"/>
+        <property name="rejectedExecutionHandler">
+            <bean class="java.util.concurrent.ThreadPoolExecutor$CallerRunsPolicy"/>
+        </property>
+    </bean>
 </beans>

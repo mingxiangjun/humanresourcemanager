@@ -13,12 +13,13 @@
        http://www.springframework.org/schema/cache
        http://www.springframework.org/schema/cache/spring-cache-4.0.xsd
 ">
+    <context:component-scan base-package="org.ming.humanresource"/>
     <!-- 启用缓存注解功能，这个是必须的，否则注解不会生效，另外，该注解一定要声明在spring主配置文件中才会生效 -->
     <cache:annotation-driven cache-manager="cacheManager" />
     <!-- 定义视图解析器 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix">
-            <value>/jsp/</value>
+            <value>/WEB-INF/jsp/</value>
         </property>
         <property name="suffix">
             <value>.jsp</value>

@@ -1,5 +1,6 @@
 package org.ming.humanresource.hrmanager.service.impl;
 
+import com.codahale.metrics.annotation.Timed;
 import org.ming.humanresource.base.impl.BaseServiceImpl;
 import org.ming.humanresource.common.annotation.OperationLogAnnotation;
 import org.ming.humanresource.hrmanager.dao.AccountInfoDao;
@@ -7,6 +8,7 @@ import org.ming.humanresource.hrmanager.model.AccountInfo;
 import org.ming.humanresource.hrmanager.service.AccountInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 
@@ -40,8 +42,10 @@ public class AccountInfoServiceImpl extends BaseServiceImpl<AccountInfo> impleme
      * @param account
      * @return
      */
+    @Transactional(readOnly = true)
     @Override
-    @OperationLogAnnotation(operatorType=1,resultType = 10086)
+    @OperationLogAnnotation(operatorType=1,operateId = "#account")
+    @Timed
     public AccountInfo findByAccount(String account) {
         return accountInfoDao.findByAccount(account);
     }

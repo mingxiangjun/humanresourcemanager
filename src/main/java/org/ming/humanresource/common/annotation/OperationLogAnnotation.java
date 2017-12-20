@@ -11,8 +11,10 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface OperationLogAnnotation {
-    //操作类型
+    //操作类型：创建，查询，删除，更新
     int operatorType() default  0;
-    //操作结果
-    int resultType() default 0;
+    //操作数据id
+    String operateId() default "";
+    //日志信息
+    String targetLog() default  "";
 }
