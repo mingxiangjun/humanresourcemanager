@@ -16,8 +16,8 @@ import java.util.concurrent.TimeUnit;
  * @author MingXiangjun
  * @create 2017-12-17 19:12
  */
-@Configuration
-@EnableMetrics
+//@Configuration
+//@EnableMetrics
 public class MetricsConfig implements MetricsConfigurer {
     // 注册器
     private MetricRegistry metricRegistry;
@@ -26,7 +26,7 @@ public class MetricsConfig implements MetricsConfigurer {
     public void configureReporters(MetricRegistry metricRegistry) {
         // 控制台输出
         ConsoleReporter consoleReporter = ConsoleReporter.forRegistry(metricRegistry).convertRatesTo(TimeUnit.SECONDS).convertDurationsTo(TimeUnit.SECONDS).build();
-        consoleReporter.start(3,TimeUnit.SECONDS);
+        consoleReporter.start(30,TimeUnit.SECONDS);
     }
 
     @Override

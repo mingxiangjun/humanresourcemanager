@@ -5,13 +5,14 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 /**
  * 用户信息实体类，与AccountInfo一一对应
  * @author MingXiangjun
  * @create 2017-12-11 14:26
  */
-public class UserInfo {
+public class UserInfo implements Serializable{
     //主键ID
     @Id
     @Column(name = "uuid")

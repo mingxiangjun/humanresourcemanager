@@ -1,19 +1,32 @@
 package org.ming.humanresource.cache.service.impl;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.ming.humanresource.cache.service.CacheService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.Cache.ValueWrapper;
 import org.springframework.cache.CacheManager;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.PropertySources;
 import org.springframework.data.redis.cache.RedisCache;
 import org.springframework.data.redis.cache.RedisCacheElement;
 import org.springframework.data.redis.cache.RedisCacheKey;
+import org.springframework.data.redis.serializer.RedisSerializer;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
+import org.springframework.stereotype.Service;
 
+@Service(value = "cacheService")
 public class RedisCacheServiceImpl implements CacheService {
+
+    @Value("${redis.isUsePrefix}")
+    public Boolean isUsePrefix=false;
+
     @Autowired
     private CacheManager cacheManager;
     @Override
     public <V> V cacheResult(String key, String cacheName) {
-        return (V) cacheManager.getCache(cacheName).get(key);
+        ValueWrapper valueWrapper = cacheManager.getCache(cacheName).get(key);
+        return valueWrapper!=null? (V) valueWrapper.get() :null;
     }
 
     @Override
@@ -36,7 +49,13 @@ public class RedisCacheServiceImpl implements CacheService {
      */
     @Override
     public <V> void cachePut(String key, V value, String cacheName, long timeToLive) {
-        RedisCacheElement element = new RedisCacheElement(new RedisCacheKey(key),value);
+        RedisCacheKey redisCacheKey = new RedisCacheKey(key.getBytes());
+        if (isUsePrefix){
+            RedisSerializer serializer = new StringRedisSerializer();
+            byte[] prefix = serializer.serialize(cacheName.concat(":"));
+            redisCacheKey.usePrefix(prefix);
+        }
+        RedisCacheElement element = new RedisCacheElement(redisCacheKey,value);
         element.setTimeToLive(timeToLive);
         RedisCache cache = (RedisCache) cacheManager.getCache(cacheName);
         cache.put(element);

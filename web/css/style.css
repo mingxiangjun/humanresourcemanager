@@ -5,4 +5,10 @@
 .main{
     width: 1300px;
     height: 900px;
+    text-align: center;
+}
+.content{
+    width: 50%;
+    text-align: center;
+    padding-left:25%;
 }

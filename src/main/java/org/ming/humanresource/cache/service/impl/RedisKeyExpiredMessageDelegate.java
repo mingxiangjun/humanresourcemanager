@@ -3,6 +3,8 @@ package org.ming.humanresource.cache.service.impl;
 import org.ming.humanresource.cache.service.MessageDelegate;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 
 /**
@@ -13,6 +15,7 @@ public class RedisKeyExpiredMessageDelegate implements MessageDelegate{
     @Override
     public void handleMessage(String message) {
         System.out.println(message);
+        System.out.println(new SimpleDateFormat("HH:mm:ss").format(new Date()));
         System.out.println("-------------RedisKeyExpiredMessageDelegate:handleMessage(String message)-------------");
     }
 

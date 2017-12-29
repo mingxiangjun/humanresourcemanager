@@ -28,7 +28,7 @@ public class AccountInfoServiceImplTest {
 
     @Test
     public void findByAccount() throws Exception {
-        account="userName1008600000";
+        account="userName10086";
         AccountInfo accountInfo = accountInfoService.findByAccount(account);
         if (accountInfo!=null){
             System.out.println("用户名为："+accountInfo.getAccount());
@@ -46,7 +46,7 @@ public class AccountInfoServiceImplTest {
             taskExecutor.execute(new QueryRequest(tmpAccount));
 //            new Thread(new QueryRequest(tmpAccount)).start();
 //            cdl.countDown();
-            System.out.println("==================================="+cdl.toString());
+//            System.out.println("==================================="+cdl.toString());
         }
 
         try {
@@ -84,13 +84,12 @@ public class AccountInfoServiceImplTest {
 //            } catch (InterruptedException e) {
 //                e.printStackTrace();
 //            }
-            System.out.println("当前线程为:"+Thread.currentThread());
             AccountInfo accountInfo = accountInfoService.findByAccount(account_);
             if (accountInfo!=null){
                 System.out.println("用户名为："+accountInfo.getAccount());
                 System.out.println("用户安全邮箱为："+accountInfo.getEmail());
             }else{
-                System.out.println("未查找到用户名为:【"+account+"】的用户信息");
+                System.out.println("未查找到用户名为:【"+account_+"】的用户信息");
             }
         }
     }

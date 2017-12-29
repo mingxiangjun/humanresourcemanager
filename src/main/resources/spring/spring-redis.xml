@@ -13,7 +13,7 @@
         <property name="port" value="${redis.port}"/>
         <property name="database" value="${redis.database}"/>
         <property name="timeout" value="${redis.timeout}"/>
-        <property name="usePool" value="${redis.userPool}"/>
+        <property name="usePool" value="${redis.usePool}"/>
         <property name="poolConfig" ref="poolconfig"/>
     </bean>
     <!-- Spring-redis redisServiceName -->
@@ -29,10 +29,11 @@
     </bean>
     <bean id="cacheManager" class="org.springframework.data.redis.cache.RedisCacheManager">
         <constructor-arg index="0" ref="redisTemplate"/>
+        <property name="usePrefix" value="${redis.isUsePrefix}"/>
         <property name="expires">
             <map>
-                <entry key="amount" value="1"/>
-                <entry key="amount_bakup" value="100"/>
+                <entry key="${redis.cacheName}" value="30"/>
+                <entry key="${redis.backCacheName}" value="100"/>
             </map>
         </property>
     </bean>

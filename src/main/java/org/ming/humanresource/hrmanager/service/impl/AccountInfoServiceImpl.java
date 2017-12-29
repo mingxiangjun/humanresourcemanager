@@ -2,11 +2,13 @@ package org.ming.humanresource.hrmanager.service.impl;
 
 import com.codahale.metrics.annotation.Timed;
 import org.ming.humanresource.base.impl.BaseServiceImpl;
+import org.ming.humanresource.common.annotation.CacheData;
 import org.ming.humanresource.common.annotation.OperationLogAnnotation;
 import org.ming.humanresource.hrmanager.dao.AccountInfoDao;
 import org.ming.humanresource.hrmanager.model.AccountInfo;
 import org.ming.humanresource.hrmanager.service.AccountInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -42,11 +44,13 @@ public class AccountInfoServiceImpl extends BaseServiceImpl<AccountInfo> impleme
      * @param account
      * @return
      */
-    @Transactional(readOnly = true)
     @Override
+    @Transactional(readOnly = true)
+    @CacheData
     @OperationLogAnnotation(operatorType=1,operateId = "#account")
-    @Timed
+//    @Timed
     public AccountInfo findByAccount(String account) {
+        System.out.println("当前线程信息："+Thread.currentThread().toString());
         return accountInfoDao.findByAccount(account);
     }
 }
