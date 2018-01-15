@@ -2,9 +2,7 @@ package org.ming.humanresource.hrmanager.model;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
@@ -12,6 +10,8 @@ import java.io.Serializable;
  * @author MingXiangjun
  * @create 2017-12-11 14:26
  */
+@Entity
+@Table(name="userInfo_")
 public class UserInfo implements Serializable{
     //主键ID
     @Id
