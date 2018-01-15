@@ -1,7 +1,5 @@
 package org.ming.humanresource.cache.service;
 
-import org.springframework.data.redis.cache.RedisCacheElement;
-
 /**
  * CacheService.java
  * @author MingXiangjun

@@ -51,7 +51,7 @@
                 <entry key-ref="messageListener">
                     <list>
                         <bean class="org.springframework.data.redis.listener.ChannelTopic">
-                            <constructor-arg value="__keyevent@0__:expired" />
+                            <constructor-arg value="${redis.keySpaceChannel}" />
                         </bean>
                     </list>
                 </entry>

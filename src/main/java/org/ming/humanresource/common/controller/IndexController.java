@@ -56,12 +56,12 @@ public class IndexController {
                                HttpServletResponse response) throws IOException {
         System.out.println(new SimpleDateFormat("HH:mm:ss").format(new Date()));
         cacheService.cachePut(key+CommonConstants.CACHENAME,content, CommonConstants.CACHENAME);
-        cacheService.cachePut(key+CommonConstants.CACHENAME_BAK,content, CommonConstants.CACHENAME_BAK);
-        cacheService.cachePut(key+"test",content, "test",30);
+//        cacheService.cachePut(key+CommonConstants.CACHENAME_BAK,content, CommonConstants.CACHENAME_BAK);
+//        cacheService.cachePut(key+"test",content, "test",30);
 
         JSONObject resultJson = new JSONObject();
         resultJson.element("code","1").element("msg","操作成功");
         PrintWriter out = response.getWriter();
-        out.write("");
+        out.write(resultJson.toString());
     }
 }

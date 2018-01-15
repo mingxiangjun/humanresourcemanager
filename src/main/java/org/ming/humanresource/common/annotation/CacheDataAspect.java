@@ -90,7 +90,7 @@ public class CacheDataAspect {
         StringBuffer buffer = new StringBuffer(methodName);
         for (int i = 0; i < args.length; i++) {
             buffer.append(args[i].toString());
-            System.out.println("当前参数：" + args[i]);
+            logger.info("当前参数：" + args[i]);
         }
         byte[] baseEncode = Base64.encode(buffer.toString().getBytes());
         String key = getMd5(baseEncode);

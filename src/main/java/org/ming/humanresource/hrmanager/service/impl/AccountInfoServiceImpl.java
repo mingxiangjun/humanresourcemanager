@@ -1,5 +1,7 @@
 package org.ming.humanresource.hrmanager.service.impl;
 
+import com.codahale.metrics.annotation.Counted;
+import com.codahale.metrics.annotation.Metered;
 import com.codahale.metrics.annotation.Timed;
 import org.ming.humanresource.base.impl.BaseServiceImpl;
 import org.ming.humanresource.common.annotation.CacheData;
